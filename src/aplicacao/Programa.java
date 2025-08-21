@@ -60,10 +60,6 @@ public class Programa {
         for (Funcionarios f : listaFunc){
             System.out.println(f);
         }
-
-
-
-
         sc.close();
     }
 }
