@@ -7,6 +7,9 @@ import model.entidades.Gerente;
 import model.enums.Cargos;
 import model.excecoes.MinhasExcecoes;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -17,6 +20,8 @@ public class Programa {
 
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        LocalDateTime hora = LocalDateTime.now(ZoneId.systemDefault());
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         List<Funcionarios> listaFunc = new ArrayList<>();
 
         try {
@@ -24,7 +29,8 @@ public class Programa {
             int N = sc.nextInt();
 
             for (int i = 0; i < N; i++) {
-                System.out.println("Entre com os dados do funcionario: ");
+                System.out.println();
+                System.out.println("Entre com os dados do "+(i+1)+"° funcionario: ");
                 System.out.print("Nome do funcionario: ");
                 sc.nextLine();
                 String nome =  sc.nextLine();
@@ -57,9 +63,14 @@ public class Programa {
             System.out.println("Erro! Campo digitado INCORRETAMENTE!");
         }
         System.out.println();
+        System.out.println("-----------------------------");
+        System.out.println("   DADOS DOS FUNCIONÁRIOS    ");
+        System.out.println("-----------------------------");
         for (Funcionarios f : listaFunc){
             System.out.println(f);
         }
+        System.out.println("-----------------------------");
+        System.out.println(hora.format(fmt));
         sc.close();
     }
 }
